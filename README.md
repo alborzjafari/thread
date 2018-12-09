@@ -1,2 +1,3 @@
 # Cpp-multithreading-wrapper
-C++ multithreading wrapper
+
+g++ example.cpp thread.cpp -std=c++11 -lpthread
