@@ -3,13 +3,11 @@
 
 #include <thread>
 
-using namespace std;
-
 class Thread{
 
 	protected:
 		virtual void run() = 0;
-		thread	*threadObject = nullptr;
+		std::thread *threadObject = nullptr;
 
 	public:
 		void start();
