@@ -5,15 +5,16 @@
 
 class Thread{
 
-	protected:
-		virtual void run() = 0;
-		std::thread *threadObject = nullptr;
+  protected:
+    virtual void run() = 0;
+    std::thread *threadObject = nullptr;
 
-	public:
-		void start();
-		Thread();
-		virtual ~Thread();
-		void join();
+  public:
+    virtual ~Thread();
+    Thread();
+
+    void start();
+    void join();
 };
 
 #endif

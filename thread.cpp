@@ -2,22 +2,22 @@
 
 #include "thread.h"
 
-void Thread::start()
+Thread::~Thread()
 {
-	threadObject = new std::thread(&Thread::run, this);
+  delete threadObject;
 }
 
 Thread::Thread()
 {
 }
 
-Thread::~Thread()
+void Thread::start()
 {
-	delete threadObject;
+  threadObject = new std::thread(&Thread::run, this);
 }
 
 void Thread::join()
 {
-	threadObject->join();
+  threadObject->join();
 }
 
