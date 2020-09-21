@@ -2,22 +2,39 @@
 
 #include "thread.h"
 
+using namespace std;
+
 Thread::~Thread()
 {
-  delete threadObject;
+  delete thread_object;
 }
 
 Thread::Thread()
 {
 }
 
+Thread::Thread(Thread&& src) noexcept : thread_object(move(src.thread_object))
+{
+  src.thread_object = nullptr;
+}
+
+Thread& Thread::operator=(Thread&& rhs)
+{
+  if (&rhs == this)
+    return *this;
+
+  thread_object = rhs.thread_object;
+  rhs.thread_object = nullptr;
+
+  return *this;
+}
+
 void Thread::start()
 {
-  threadObject = new std::thread(&Thread::run, this);
+  thread_object = new std::thread(&Thread::run, this);
 }
 
 void Thread::join()
 {
-  threadObject->join();
+  thread_object->join();
 }
-

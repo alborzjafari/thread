@@ -1,22 +1,24 @@
-#include <iostream>
-
 #include <unistd.h>	// sleep() function
+
+#include <iostream>
 
 #include "thread.h"
 
+using namespace std;
+
 class SimpleThread : public Thread {
   private:
-    std::string name;
+    string name;
     void run() {
       int x = 5;
       while(--x) {
-        std::cout << name << " is running" << std::endl;
+        cout << name << " is running" << endl;
         sleep(1);
       }
-      std::cout << name << " finished." << std::endl;
+      cout << name << " finished." << endl;
     }
   public:
-    SimpleThread(std::string name) : name(name){};
+    SimpleThread(string name) : name(name) {};
 };
 
 int main()
