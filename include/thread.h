@@ -2,6 +2,7 @@
 #define _THREAD_H
 
 #include <thread>
+#include <atomic>
 
 class Thread{
   public:
@@ -14,12 +15,15 @@ class Thread{
 
     void start();
     void join();
+    bool running() const noexcept;
 
   protected:
     virtual void run() = 0;
 
   private:
+    void entry_point();
     std::thread *thread_object = nullptr;
+    std::atomic<bool> is_running;
 };
 
 #endif

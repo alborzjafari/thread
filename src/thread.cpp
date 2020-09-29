@@ -9,7 +9,7 @@ Thread::~Thread()
   delete thread_object;
 }
 
-Thread::Thread()
+Thread::Thread() : is_running(true)
 {
 }
 
@@ -31,10 +31,22 @@ Thread& Thread::operator=(Thread&& rhs)
 
 void Thread::start()
 {
-  thread_object = new std::thread(&Thread::run, this);
+  thread_object = new std::thread(&Thread::entry_point, this);
 }
 
 void Thread::join()
 {
   thread_object->join();
+  is_running.store(false);
+}
+
+bool Thread::running() const noexcept
+{
+  return is_running.load();
+}
+
+void Thread::entry_point()
+{
+  run();
+  is_running.store(false);
 }
