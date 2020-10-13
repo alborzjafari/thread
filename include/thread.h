@@ -10,7 +10,7 @@ class Thread{
     Thread();
     Thread(const Thread& src) = delete;   // copy constructor
     Thread(Thread&& src) noexcept;    // move constructor
-    Thread& operator=(Thread&& rhs);    // move assignment
+    Thread& operator=(Thread&& rhs) noexcept;    // move assignment
     Thread& operator=(const Thread& rhs) = delete;    // copy assignment
 
     void start();

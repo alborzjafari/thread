@@ -18,7 +18,7 @@ Thread::Thread(Thread&& src) noexcept : thread_object(move(src.thread_object))
   src.thread_object = nullptr;
 }
 
-Thread& Thread::operator=(Thread&& rhs)
+Thread& Thread::operator=(Thread&& rhs) noexcept
 {
   if (&rhs == this)
     return *this;
