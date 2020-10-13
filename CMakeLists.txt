@@ -1,6 +1,11 @@
 cmake_minimum_required (VERSION 2.6)
 project (Thread)
 
+set (CMAKE_CXX_STANDARD 14)
+
+set(GCC_COVERAGE_COMPILE_FLAGS "-Wall")
+add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
+
 include_directories(${PROJECT_SOURCE_DIR} include)
 add_subdirectory(src)
 
