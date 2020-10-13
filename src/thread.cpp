@@ -6,7 +6,6 @@ using namespace std;
 
 Thread::~Thread()
 {
-  delete thread_object;
 }
 
 Thread::Thread() : is_running(true)
@@ -15,23 +14,19 @@ Thread::Thread() : is_running(true)
 
 Thread::Thread(Thread&& src) noexcept : thread_object(move(src.thread_object))
 {
-  src.thread_object = nullptr;
 }
 
 Thread& Thread::operator=(Thread&& rhs) noexcept
 {
-  if (&rhs == this)
-    return *this;
-
-  thread_object = rhs.thread_object;
-  rhs.thread_object = nullptr;
+  if (&rhs != this)
+    thread_object = move(rhs.thread_object);
 
   return *this;
 }
 
 void Thread::start()
 {
-  thread_object = new std::thread(&Thread::entry_point, this);
+  thread_object = make_unique<std::thread>(&Thread::entry_point, this);
 }
 
 void Thread::join()

@@ -3,6 +3,7 @@
 
 #include <thread>
 #include <atomic>
+#include <memory>
 
 class Thread{
   public:
@@ -22,7 +23,7 @@ class Thread{
 
   private:
     void entry_point();
-    std::thread *thread_object = nullptr;
+    std::unique_ptr<std::thread> thread_object;
     std::atomic<bool> is_running;
 };
 
