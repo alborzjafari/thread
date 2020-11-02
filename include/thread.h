@@ -1,11 +1,11 @@
-#ifndef _THREAD_H
-#define _THREAD_H
+#ifndef THREAD_H
+#define THREAD_H
 
 #include <thread>
 #include <atomic>
 #include <memory>
 
-class Thread{
+class Thread {
   public:
     virtual ~Thread();
     Thread();
