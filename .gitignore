@@ -1,0 +1,15 @@
+# make and cmake
+CMakeFiles/
+CMakeCache.txt
+Makefile
+**.cmake
+**.un~
+src/CMekeFiles/
+build/
+
+# libs
+libs/*.so
+libs/*.a
+
+# vim
+*.swp
